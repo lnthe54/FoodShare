@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/tv_by_area"
+        android:title="@string/tv_filter_area" />
+    <item
+        android:id="@+id/tv_by_all"
+        android:title="@string/tv_filter_all" />
+</menu>

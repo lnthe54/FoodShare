@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Ăn Vặt Hà Nội</string>
+    <string name="tv_home">Home</string>
+    <string name="tv_search">Search</string>
+    <string name="tv_favorite">Favorite</string>
+    <string name="tv_other">Other</string>
+    <string name="tv_setting">Setting</string>
+    <string name="tv_log_out">Log Out</string>
+    <string name="tv_title_tb">Title</string>
+    <string name="tv_add">Post</string>
+    <string name="tv_notification">Notification</string>
+    <string name="tv_profile">Profile</string>
+    <string name="tv_name_account">Le Ngoc The</string>
+    <string name="tv_filter">Filter</string>
+    <string name="tv_open">Open</string>
+    <string name="tv_close">Close</string>
+    <string name="et_search">Search a here...</string>
+    <string name="tv_name">Food name *</string>
+    <string name="tv_image">Picture *</string>
+    <string name="tv_price">Price *</string>
+    <string name="tv_address">Address *</string>
+    <string name="tv_area">Area *</string>
+    <string name="tv_description">Description *</string>
+    <string name="btn_post">Post</string>
+    <string name="tv_notifi">No notification</string>
+    <string name="tv_filter_area">By Area</string>
+    <string name="tv_filter_all">By All</string>
+    <string name="tv_direction">Direction</string>
+    <string name="tv_comment">Comment</string>
+    <string name="title_activity_maps">Map</string>
+
+    <!-- text introduce -->
+    <string name="title_introduce01">Ăn uống khắp Hà Nội</string>
+    <string name="sub_title_introduce01">Thỏa sức đam mê với các món ăn, đồ uống khu vực Hà Nội</string>
+
+    <string name="title_introduce02">Chia sẻ địa điểm ăn vặt</string>
+    <string name="sub_title_introduce02">Chia sẻ các địa điểm mà bạn đã từng trải nghiệm đến với mọi người</string>
+
+    <string name="title_introduce03">Review các địa điểm</string>
+    <string name="sub_title_introduce03">Review lại các món ăn, địa điểm đã được mọi người chia sẻ</string>
+    <string name="tv_skip">Skip</string>
+</resources>

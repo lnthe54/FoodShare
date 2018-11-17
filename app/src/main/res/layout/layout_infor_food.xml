@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_price"
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_toLeftOf="@id/tv_direction"
+        android:drawableLeft="@drawable/ic_money"
+        android:drawablePadding="5dp"
+        android:text="25k"
+        android:textColor="@color/colorBlack" />
+
+    <TextView
+        android:id="@+id/tv_time"
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_price"
+        android:layout_marginTop="5dp"
+        android:layout_toLeftOf="@id/tv_direction"
+        android:drawableLeft="@drawable/ic_time"
+        android:drawablePadding="5dp"
+        android:text="7:00 - 11:00"
+        android:textColor="@color/colorBlack" />
+
+    <TextView
+        android:id="@+id/tv_address"
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_time"
+        android:layout_marginTop="5dp"
+        android:layout_toLeftOf="@id/tv_direction"
+        android:drawableLeft="@drawable/ic_location"
+        android:drawablePadding="5dp"
+        android:lines="2"
+        android:text="Thị Trấn Phùng - Đan Phượng - Hà Nội"
+        android:textColor="@color/colorBlack" />
+
+    <TextView
+        android:id="@+id/tv_direction"
+        style="?android:textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:drawableTop="@drawable/ic_directions"
+        android:padding="10dp"
+        android:text="@string/tv_direction"
+        android:textColor="@color/colorOrange" />
+</RelativeLayout>

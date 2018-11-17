@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:anxmlns="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="2.5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="2.5dp"
+    anxmlns:contentPadding="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_food"
+            android:layout_width="130dp"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/nem_phung" />
+
+        <TextView
+            android:id="@+id/tv_name_food"
+            style="?android:textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_food"
+            android:maxLines="2"
+            android:text="Nem Phùng"
+            android:textColor="@color/colorOrange" />
+
+        <TextView
+            android:id="@+id/line"
+            android:layout_width="100dp"
+            android:layout_height="1dp"
+            android:layout_below="@id/tv_name_food"
+            android:layout_alignLeft="@id/tv_name_food"
+            android:layout_marginTop="5dp"
+            android:background="@color/colorOrange" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            style="?android:textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line"
+            android:layout_alignLeft="@id/tv_name_food"
+            android:layout_marginTop="5dp"
+            android:drawableLeft="@drawable/ic_money"
+            android:drawablePadding="5dp"
+            android:lines="1"
+            android:text="25k"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            style="?android:textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_price"
+            android:layout_alignLeft="@id/tv_name_food"
+            android:layout_marginTop="5dp"
+            android:drawableLeft="@drawable/ic_time"
+            android:drawablePadding="5dp"
+            android:lines="1"
+            android:text="7:00 - 11:00"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            style="?android:textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_time"
+            android:layout_alignLeft="@id/tv_name_food"
+            android:layout_marginTop="5dp"
+            android:drawableLeft="@drawable/ic_location"
+            android:drawablePadding="5dp"
+            android:lines="2"
+            android:text="Thị Trấn Phùng - Đan Phượng - Hà Nội"
+            android:textColor="@color/colorBlack" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/layout_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <EditText
+            style="?android:textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/iv_filter"
+            android:background="@drawable/custom_bg_et_search"
+            android:drawableLeft="@drawable/hint_ic_search"
+            android:ellipsize="end"
+            android:hint="@string/et_search"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="5dp"
+            android:scrollHorizontally="true" />
+
+        <ImageView
+            android:id="@+id/iv_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingTop="5dp"
+            android:src="@drawable/ic_filter_grey" />
+    </RelativeLayout>
+
+</RelativeLayout>

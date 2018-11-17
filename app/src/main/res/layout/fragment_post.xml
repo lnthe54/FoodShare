@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/tv_name_food"
+            style="?android:textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/tv_name"
+            android:textColor="@color/colorOrange" />
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_name_food"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/tv_image"
+            style="?android:textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_name"
+            android:layout_marginTop="5dp"
+            android:text="@string/tv_image"
+            android:textColor="@color/colorOrange" />
+
+        <ImageView
+            android:id="@+id/img_food"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/tv_image"
+            android:src="@drawable/default_img" />
+
+        <TextView
+            android:id="@+id/tv_price_food"
+            style="?android:textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_food"
+            android:layout_marginTop="5dp"
+            android:text="@string/tv_price"
+            android:textColor="@color/colorOrange" />
+
+        <EditText
+            android:id="@+id/et_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_price_food"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/tv_address_food"
+            style="?android:textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_price"
+            android:layout_marginTop="5dp"
+            android:text="@string/tv_address"
+            android:textColor="@color/colorOrange" />
+
+        <EditText
+            android:id="@+id/et_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_address_food"
+            android:inputType="text" />
+
+
+        <TextView
+            android:id="@+id/tv_area"
+            style="?android:textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_address"
+            android:layout_marginTop="5dp"
+            android:text="@string/tv_area"
+            android:textColor="@color/colorOrange" />
+
+        <Spinner
+            android:id="@+id/sp_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_area"
+            android:drawSelectorOnTop="true"></Spinner>
+
+        <TextView
+            android:id="@+id/tv_description_food"
+            style="?android:textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sp_area"
+            android:layout_marginTop="5dp"
+            android:text="@string/tv_description"
+            android:textColor="@color/colorOrange" />
+
+        <EditText
+            android:id="@+id/et_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_description_food"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/btn_post"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_description"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/custom_btn_post"
+            android:text="@string/btn_post"
+            android:textColor="@color/colorWhite" />
+    </RelativeLayout>
+
+</ScrollView>
