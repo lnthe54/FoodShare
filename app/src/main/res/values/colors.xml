@@ -9,6 +9,7 @@
     <color name="colorBg">#95C3D7</color>
     <color name="colorGrey">#666666</color>
     <color name="colorBlack">#000000</color>
+    <color name="blackOpacity">#99000000</color>
     <color name="colorBlackOpacity">#60000000</color>
     <color name="colorOrangeOpacity">#CCFF6600</color>
 </resources>

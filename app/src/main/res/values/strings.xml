@@ -39,4 +39,15 @@
     <string name="title_introduce03">Review các địa điểm</string>
     <string name="sub_title_introduce03">Review lại các món ăn, địa điểm đã được mọi người chia sẻ</string>
     <string name="tv_skip">Skip</string>
+
+    <string name="facebook_app_id">2100329903365904</string>
+    <string name="tv_signin">Sign In</string>
+    <string name="tv_signup">Sign Up</string>
+    <string name="name">Email or number phone</string>
+    <string name="password">Password</string>
+    <string name="tv_login">Đăng Nhập</string>
+    <string name="tv_or">Hoặc</string>
+    <string name="tv_login_fb">Đăng Nhập Với Facebook</string>
+    <string name="tv_register">Đăng Ký</string>
+    <string name="password_confirm">Confirm Password</string>
 </resources>

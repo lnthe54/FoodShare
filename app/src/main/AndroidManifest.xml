@@ -3,8 +3,7 @@
     package="com.example.lnthe54.foodshare">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
@@ -14,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.IntroduceActivity"
+        <activity
+            android:name=".view.activity.IntroduceActivity"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.activity.MainActivity"/>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity android:name=".view.activity.LoginActivity" />
+        <activity android:name=".view.activity.MainActivity" />
         <activity android:name=".view.activity.DetailFoodActivity" />
 
         <meta-data
@@ -32,6 +37,7 @@
         <activity
             android:name=".view.activity.MapsActivity"
             android:label="@string/title_activity_maps"></activity>
+        <activity android:name=".view.activity.LoginActivity02" />
     </application>
 
 </manifest>

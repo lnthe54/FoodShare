@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.lnthe54.foodshare.R;
-import com.example.lnthe54.foodshare.view.activity.MainActivity;
+import com.example.lnthe54.foodshare.view.activity.LoginActivity02;
 
 /**
  * @author lnthe54 on 11/13/2018
@@ -50,7 +50,7 @@ public class FragmentIntroduce3 extends Fragment implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
-        Intent openMain = new Intent(getContext(), MainActivity.class);
+        Intent openMain = new Intent(getContext(), LoginActivity02.class);
         startActivity(openMain);
     }
 }

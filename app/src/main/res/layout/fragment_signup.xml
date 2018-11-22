@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp">
+
+    <RelativeLayout
+        android:id="@+id/layout_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/et_username"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/tv_username"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/custom_editext"
+            android:drawableLeft="@drawable/ic_username"
+            android:drawablePadding="10dp"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:scrollHorizontally="true"
+            android:textColor="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/tv_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_username"
+            android:layout_marginTop="10dp"
+            android:text="@string/password"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/tv_password"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/custom_editext"
+            android:drawableLeft="@drawable/ic_password"
+            android:drawablePadding="10dp"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:scrollHorizontally="true"
+            android:textColor="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/tv_password_conf"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/et_password"
+            android:layout_marginTop="10dp"
+            android:text="@string/password_confirm"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/et_password_conf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_password_conf"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/custom_editext"
+            android:drawableLeft="@drawable/ic_password"
+            android:drawablePadding="10dp"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:scrollHorizontally="true"
+            android:textColor="@color/colorWhite" />
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_password_conf"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/tv_register"
+            android:textColor="@color/colorWhite" />
+    </RelativeLayout>
+</RelativeLayout>
