@@ -12,10 +12,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.lnthe54.foodshare.R;
-import com.example.lnthe54.foodshare.model.User;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author lnthe54 on 11/22/2018
@@ -33,11 +40,12 @@ public class FragmentSignUp extends Fragment implements View.OnClickListener {
     }
 
     private View view;
-    private ArrayList<User> listUser;
     private Button btnRegister;
     private EditText etUsername;
     private EditText etPassword;
     private EditText etPasswordConfirm;
+
+    private String urlRegister = "http://192.168.1.220/androidwebservice/register.php";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -75,23 +83,40 @@ public class FragmentSignUp extends Fragment implements View.OnClickListener {
     }
 
     private void handlingRegister() {
-        listUser = new ArrayList<>();
+        final RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlRegister,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.equals("Register success")) {
+                            Toast.makeText(getContext(), "Register Success", Toast.LENGTH_SHORT).show();
+                            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                            transaction.replace(R.id.frame_layout, FragmentSignIn.getInstance());
+                            transaction.commit();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
 
-        String username = etUsername.getText().toString().trim();
-        String password = etPassword.getText().toString().trim();
-        String confirmPassword = etPasswordConfirm.getText().toString().trim();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                String password = etPassword.getText().toString().trim();
+                String confirmPassword = etPasswordConfirm.getText().toString().trim();
+                if (password.equals(confirmPassword)) {
+                    params.put("name_user", etUsername.getText().toString().trim());
+                    params.put("password_user", password);
+                    params.put("confirm_password", confirmPassword);
+                }
 
-        listUser.add(new User(username, password));
+                return params;
+            }
+        };
 
-        if (password.equals(confirmPassword)) {
-
-            Toast.makeText(getContext(), "Register Success", Toast.LENGTH_SHORT).show();
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_layout, FragmentSignIn.getInstance(username, password));
-            transaction.commit();
-
-        } else {
-            Toast.makeText(getContext(), "Password khong khop", Toast.LENGTH_SHORT).show();
-        }
+        requestQueue.add(stringRequest);
     }
 }
