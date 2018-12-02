@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         android:background="@color/colorBlackOpacity" />
 
-    <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/iv_avatar"
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -25,11 +25,8 @@
         android:layout_marginLeft="20dp"
         android:scaleType="centerCrop"
         android:src="@drawable/avatar_demo"
-        app:riv_border_color="@color/colorWhite"
-        app:riv_border_width="1dp"
-        app:riv_corner_radius="30dp"
-        app:riv_mutate_background="true"
-        app:riv_oval="true" />
+        app:civ_border_color="@color/colorWhite"
+        app:civ_border_width="1dp" />
 
     <TextView
         android:id="@+id/tv_name_account"

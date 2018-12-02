@@ -5,12 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.lnthe54.foodshare.R;
 import com.example.lnthe54.foodshare.model.Area;
-import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * @author lnthe54 on 11/10/2018
  * @project FoodShare
  */
-public class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.AreaHolder>{
+public class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.AreaHolder> {
 
     private CallBack callBack;
     private ArrayList<Area> listArea;
@@ -48,7 +48,7 @@ public class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.AreaHolder>{
 
     public class AreaHolder extends RecyclerView.ViewHolder {
 
-        private RoundedImageView ivArea;
+        private ImageView ivArea;
         private TextView tvNameArea;
 
         public AreaHolder(@NonNull View itemView) {

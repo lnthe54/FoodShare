@@ -36,6 +36,11 @@
             android:layout_below="@id/layout_banner">
 
         </android.support.v7.widget.RecyclerView>
+
+        <include
+            android:id="@+id/layout_filter"
+            layout="@layout/layout_filter"
+            android:visibility="gone" />
     </RelativeLayout>
 
 </android.support.v4.widget.NestedScrollView>

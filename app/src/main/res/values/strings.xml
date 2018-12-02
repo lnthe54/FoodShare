@@ -50,4 +50,9 @@
     <string name="tv_login_fb">Đăng Nhập Với Facebook</string>
     <string name="tv_register">Đăng Ký</string>
     <string name="password_confirm">Confirm Password</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="tv_list">Danh sách</string>
+    <string name="tv_grid">Lưới</string>
+    <string name="type_view">Kiểu Xem</string>
 </resources>

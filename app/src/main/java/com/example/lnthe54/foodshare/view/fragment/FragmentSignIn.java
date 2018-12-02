@@ -41,37 +41,14 @@ public class FragmentSignIn extends Fragment implements View.OnClickListener {
         return instance;
     }
 
-    public static FragmentSignIn getInstance(String name, String password) {
-        if (instance == null) {
-            instance = new FragmentSignIn();
-        }
-
-        Bundle bundle = new Bundle();
-        bundle.putString("name", name);
-        bundle.putString("pass", password);
-
-        instance.setArguments(bundle);
-
-        return instance;
-    }
-
     private View view;
     private EditText etUser;
     private EditText etPass;
     private Button btnLogin;
 
-    private String urlUser = "http://192.168.1.220/androidwebservice/getuser.php";
+    private String urlUser = "http://192.168.1.182/androidwebservice/getuser.php";
     private String nameUser;
     private String passwordUser;
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            nameUser = getArguments().getString("name");
-            passwordUser = getArguments().getString("pass");
-        }
-    }
 
     @Nullable
     @Override

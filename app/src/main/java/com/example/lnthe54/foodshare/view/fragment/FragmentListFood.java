@@ -65,8 +65,8 @@ public class FragmentListFood extends Fragment
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        urlGetFood = "http://192.168.1.220/androidwebservice/demogetdatafood.php";
-        urlDelFood = "http://192.168.1.220/androidwebservice/delete.php";
+        urlGetFood = "http://192.168.1.182/androidwebservice/demogetdatafood.php";
+        urlDelFood = "http://192.168.1.182/androidwebservice/delete.php";
 
         if (getArguments() != null) {
             areaID = getArguments().getLong(ConfigArea.AREA_ID);

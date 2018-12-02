@@ -20,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.lnthe54.foodshare.R;
+import com.example.lnthe54.foodshare.view.activity.LoginActivity02;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -89,10 +90,7 @@ public class FragmentSignUp extends Fragment implements View.OnClickListener {
                     @Override
                     public void onResponse(String response) {
                         if (response.equals("Register success")) {
-                            Toast.makeText(getContext(), "Register Success", Toast.LENGTH_SHORT).show();
-                            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                            transaction.replace(R.id.frame_layout, FragmentSignIn.getInstance());
-                            transaction.commit();
+                            openFrgSignIn();
                         }
                     }
                 },
@@ -107,6 +105,7 @@ public class FragmentSignUp extends Fragment implements View.OnClickListener {
                 Map<String, String> params = new HashMap<>();
                 String password = etPassword.getText().toString().trim();
                 String confirmPassword = etPasswordConfirm.getText().toString().trim();
+
                 if (password.equals(confirmPassword)) {
                     params.put("name_user", etUsername.getText().toString().trim());
                     params.put("password_user", password);
@@ -118,5 +117,15 @@ public class FragmentSignUp extends Fragment implements View.OnClickListener {
         };
 
         requestQueue.add(stringRequest);
+    }
+
+    private void openFrgSignIn() {
+        Toast.makeText(getContext(), "Register Success", Toast.LENGTH_SHORT).show();
+        LoginActivity02 loginActivity = (LoginActivity02) getActivity();
+
+
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_layout, FragmentSignIn.getInstance());
+        transaction.commit();
     }
 }

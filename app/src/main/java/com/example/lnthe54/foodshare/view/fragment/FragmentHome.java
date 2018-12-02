@@ -9,13 +9,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupMenu;
+import android.widget.RelativeLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -55,6 +54,7 @@ public class FragmentHome extends Fragment
     private View view;
     private ViewPager imagePager;
     private ImagePagerAdapter imagePagerAdapter;
+    private RelativeLayout layoutFilter;
     private LinearLayout layoutDots;
 
     private RecyclerView rvListArea;
@@ -74,7 +74,7 @@ public class FragmentHome extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        urlArea = "http://192.168.1.220/androidwebservice/getArea.php";
+        urlArea = "http://192.168.1.182/androidwebservice/getArea.php";
         //10.255.148.55
         //192.168.1.220
         frgHomePresenter = new FrgHomePresenter(this);
@@ -88,6 +88,7 @@ public class FragmentHome extends Fragment
         imagePager = view.findViewById(R.id.viewPager);
         layoutDots = view.findViewById(R.id.layout_dots);
 
+        layoutFilter = view.findViewById(R.id.layout_filter);
         rvListArea = view.findViewById(R.id.list_area);
         rvListArea.setLayoutManager(new GridLayoutManager(getContext(), SPAN_COUNT));
         rvListArea.setHasFixedSize(true);
@@ -210,7 +211,7 @@ public class FragmentHome extends Fragment
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.ic_filter: {
-                //TODO
+                layoutFilter.setVisibility(View.VISIBLE);
                 break;
             }
         }
