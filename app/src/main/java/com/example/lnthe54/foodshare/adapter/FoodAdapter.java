@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.lnthe54.foodshare.R;
-import com.example.lnthe54.foodshare.model.Food;
+import com.example.lnthe54.foodshare.model.Foods;
 
 import java.util.ArrayList;
 
@@ -19,10 +19,10 @@ import java.util.ArrayList;
  * @project FoodShare
  */
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
-    private ArrayList<Food> listFood;
+    private ArrayList<Foods> listFood;
     private CallBack callBack;
 
-    public FoodAdapter(CallBack callBack, ArrayList<Food> listFood) {
+    public FoodAdapter(CallBack callBack, ArrayList<Foods> listFood) {
         this.callBack = callBack;
         this.listFood = listFood;
     }
@@ -37,7 +37,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position) {
-        Food food = listFood.get(position);
+        Foods food = listFood.get(position);
         viewHolder.bindData(food);
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,14 +78,14 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
             tvFoodAddress = itemView.findViewById(R.id.tv_address);
         }
 
-        public void bindData(Food food) {
+        public void bindData(Foods food) {
 
             Glide.with(itemView.getContext()).load(food.getFoodImg()).into(ivFood);
 
             tvFoodName.setText(food.getFoodName());
             tvFoodPrice.setText(food.getFoodPrice() + "K");
-            tvFoodTime.setText(food.getTime());
-            tvFoodAddress.setText(food.getAddress());
+            tvFoodTime.setText(food.getFoodTime());
+            tvFoodAddress.setText(food.getFoodAddress());
         }
     }
 

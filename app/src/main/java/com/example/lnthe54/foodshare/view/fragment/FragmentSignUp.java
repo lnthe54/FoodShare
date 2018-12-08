@@ -46,7 +46,7 @@ public class FragmentSignUp extends Fragment implements View.OnClickListener {
     private EditText etPassword;
     private EditText etPasswordConfirm;
 
-    private String urlRegister = "http://192.168.1.220/androidwebservice/register.php";
+    private String urlRegister = "http://192.168.1.244/androidwebservice/register.php";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

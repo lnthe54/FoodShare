@@ -55,4 +55,5 @@
     <string name="tv_list">Danh sách</string>
     <string name="tv_grid">Lưới</string>
     <string name="type_view">Kiểu Xem</string>
+    <string name="tv_time">Time *</string>
 </resources>

@@ -21,7 +21,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.lnthe54.foodshare.R;
 import com.example.lnthe54.foodshare.adapter.FoodAdapter;
-import com.example.lnthe54.foodshare.model.Food;
+import com.example.lnthe54.foodshare.model.Foods;
 import com.example.lnthe54.foodshare.utils.ConfigArea;
 import com.example.lnthe54.foodshare.utils.ConfigFood;
 import com.example.lnthe54.foodshare.view.activity.DetailFoodActivity;
@@ -59,14 +59,14 @@ public class FragmentListFood extends Fragment
     private String urlDelFood;
     private RecyclerView rvListFood;
     private FoodAdapter foodAdapter;
-    private ArrayList<Food> listFood;
+    private ArrayList<Foods> listFood;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        urlGetFood = "http://192.168.1.182/androidwebservice/demogetdatafood.php";
-        urlDelFood = "http://192.168.1.182/androidwebservice/delete.php";
+        urlGetFood = "http://192.168.1.244/androidwebservice/demogetdatafood.php";
+        urlDelFood = "http://192.168.1.244/androidwebservice/delete.php";
 
         if (getArguments() != null) {
             areaID = getArguments().getLong(ConfigArea.AREA_ID);
@@ -98,8 +98,8 @@ public class FragmentListFood extends Fragment
         for (int i = 0; i < jsonArray.length(); i++) {
             try {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                listFood.add(new Food(jsonObject.getLong("id"), jsonObject.getString("name"),
-                        jsonObject.getInt("price"), jsonObject.getString("img"),
+                listFood.add(new Foods(jsonObject.getLong("id"), jsonObject.getString("name"),
+                        jsonObject.getString("price"), jsonObject.getString("img"),
                         jsonObject.getString("time"), jsonObject.getString("address"),
                         jsonObject.getString("description")));
             } catch (JSONException e) {
@@ -184,7 +184,7 @@ public class FragmentListFood extends Fragment
     private void openDetailActivity(int position) {
         Intent openDetail = new Intent(getContext(), DetailFoodActivity.class);
 
-        Food food = listFood.get(position);
+        Foods food = listFood.get(position);
         openDetail.putExtra(ConfigFood.FOOD_OBJECT, food);
         startActivity(openDetail);
         getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.no_change);

@@ -46,7 +46,7 @@ public class FragmentSignIn extends Fragment implements View.OnClickListener {
     private EditText etPass;
     private Button btnLogin;
 
-    private String urlUser = "http://192.168.1.182/androidwebservice/getuser.php";
+    private String urlUser = "http://192.168.1.244/androidwebservice/getuser.php";
     private String nameUser;
     private String passwordUser;
 

@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -33,13 +34,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.TimerTask;
 
 /**
  * @author lnthe54 on 11/10/2018
  * @project FoodShare
  */
 public class FragmentHome extends Fragment
-        implements FrgHomePresenter.CallBack, AreaAdapter.CallBack {
+        implements FrgHomePresenter.CallBack, AreaAdapter.CallBack, View.OnClickListener {
 
     public static FragmentHome instance;
 
@@ -60,6 +62,8 @@ public class FragmentHome extends Fragment
     private RecyclerView rvListArea;
     private AreaAdapter areaAdapter;
     private ArrayList<Area> listArea;
+    private Button btnList;
+    private Button btnGird;
 
     private static final int SPAN_COUNT = 2;
     private int dotsCount;
@@ -74,7 +78,7 @@ public class FragmentHome extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        urlArea = "http://192.168.1.182/androidwebservice/getArea.php";
+        urlArea = "http://192.168.1.244/androidwebservice/getArea.php";
         //10.255.148.55
         //192.168.1.220
         frgHomePresenter = new FrgHomePresenter(this);
@@ -92,6 +96,9 @@ public class FragmentHome extends Fragment
         rvListArea = view.findViewById(R.id.list_area);
         rvListArea.setLayoutManager(new GridLayoutManager(getContext(), SPAN_COUNT));
         rvListArea.setHasFixedSize(true);
+
+        btnList = view.findViewById(R.id.btn_list);
+        btnGird = view.findViewById(R.id.btn_gird);
     }
 
     private void addEvents() {
@@ -152,6 +159,33 @@ public class FragmentHome extends Fragment
             }
         });
 
+//        Timer timer = new Timer();
+//        timer.scheduleAtFixedRate(new MyTimerTask(), 2000, 4000);
+    }
+
+    public class MyTimerTask extends TimerTask {
+
+        @Override
+        public void run() {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+
+                    if (imagePager.getCurrentItem() == 0) {
+                        imagePager.setCurrentItem(1);
+                    } else if (imagePager.getCurrentItem() == 1) {
+                        imagePager.setCurrentItem(2);
+                    } else if (imagePager.getCurrentItem() == 2) {
+                        imagePager.setCurrentItem(3);
+                    } else if (imagePager.getCurrentItem() == 3) {
+                        imagePager.setCurrentItem(4);
+                    } else {
+                        imagePager.setCurrentItem(0);
+                    }
+                }
+            });
+
+        }
     }
 
     private void initArea(String urlGetArea) {
@@ -211,10 +245,31 @@ public class FragmentHome extends Fragment
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.ic_filter: {
-                layoutFilter.setVisibility(View.VISIBLE);
+                openFilter();
                 break;
             }
         }
         return true;
+    }
+
+    private void openFilter() {
+        layoutFilter.setVisibility(View.VISIBLE);
+        btnList.setOnClickListener(this);
+        btnGird.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_list: {
+                layoutFilter.setVisibility(View.GONE);
+                break;
+            }
+
+            case R.id.btn_gird: {
+                layoutFilter.setVisibility(View.GONE);
+                break;
+            }
+        }
     }
 }
