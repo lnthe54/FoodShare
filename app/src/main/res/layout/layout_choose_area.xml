@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/shadow"
+    android:padding="10dp">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="300dp">
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/area01"
+                style="?android:textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="@string/area01"
+                android:textColor="@color/colorPrimary" />
+
+            <RadioButton
+                android:id="@+id/area02"
+                style="?android:textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="@string/area02"
+                android:textColor="@color/colorPrimary" />
+
+            <RadioButton
+                android:id="@+id/area03"
+                style="?android:textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="@string/area03"
+                android:textColor="@color/colorPrimary" />
+
+            <RadioButton
+                android:id="@+id/area04"
+                style="?android:textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="@string/area04"
+                android:textColor="@color/colorPrimary" />
+
+            <RadioButton
+                android:id="@+id/area05"
+                style="?android:textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="@string/area05"
+                android:textColor="@color/colorPrimary" />
+
+            <RadioButton
+                android:id="@+id/area06"
+                style="?android:textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="@string/area06"
+                android:textColor="@color/colorPrimary" />
+
+            <RadioButton
+                android:id="@+id/area07"
+                style="?android:textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="@string/area07"
+                android:textColor="@color/colorPrimary" />
+
+            <RadioButton
+                android:id="@+id/area08"
+                style="?android:textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="@string/area08"
+                android:textColor="@color/colorPrimary" />
+
+            <RadioButton
+                android:id="@+id/area09"
+                style="?android:textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="@string/area09"
+                android:textColor="@color/colorPrimary" />
+
+            <RadioButton
+                android:id="@+id/area10"
+                style="?android:textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="@string/area10"
+                android:textColor="@color/colorPrimary" />
+
+            <RadioButton
+                android:id="@+id/area11"
+                style="?android:textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="@string/area11"
+                android:textColor="@color/colorPrimary" />
+
+            <RadioButton
+                android:id="@+id/area12"
+                style="?android:textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="@string/area12"
+                android:textColor="@color/colorPrimary" />
+        </RadioGroup>
+    </ScrollView>
+
+</RelativeLayout>

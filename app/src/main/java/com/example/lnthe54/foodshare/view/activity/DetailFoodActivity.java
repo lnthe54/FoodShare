@@ -12,10 +12,9 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 
 import com.example.lnthe54.foodshare.R;
-import com.example.lnthe54.foodshare.model.Food;
+import com.example.lnthe54.foodshare.model.Foods;
 import com.example.lnthe54.foodshare.utils.ConfigFood;
 import com.example.lnthe54.foodshare.view.fragment.FragmentDetailFood;
-import com.example.lnthe54.foodshare.view.fragment.FragmentImage;
 
 /**
  * @author lnthe54 on 11/10/2018
@@ -24,7 +23,7 @@ import com.example.lnthe54.foodshare.view.fragment.FragmentImage;
 public class DetailFoodActivity extends AppCompatActivity {
 
     public android.support.v7.widget.Toolbar toolbar;
-    private Food food;
+    private Foods food;
     private String foodName;
 
     @Override
@@ -44,7 +43,7 @@ public class DetailFoodActivity extends AppCompatActivity {
 
     private void getData() {
         Intent intent = getIntent();
-        food = (Food) intent.getSerializableExtra(ConfigFood.FOOD_OBJECT);
+        food = (Foods) intent.getSerializableExtra(ConfigFood.FOOD_OBJECT);
         foodName = food.getFoodName();
     }
 

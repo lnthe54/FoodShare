@@ -79,7 +79,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (checkPermissions()) {
-
+            initViews();
+            addEvents();
         } else {
             finish();
         }
@@ -218,8 +219,6 @@ public class MainActivity extends AppCompatActivity
 
     public void showFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        transaction.setCustomAnimations(android.R.anim.slide_out_right,
-//                0);
 
         transaction.replace(R.id.frame_layout, fragment);
         transaction.commit();

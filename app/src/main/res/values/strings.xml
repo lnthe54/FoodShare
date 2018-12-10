@@ -56,4 +56,20 @@
     <string name="tv_grid">Lưới</string>
     <string name="type_view">Kiểu Xem</string>
     <string name="tv_time">Time *</string>
+    <string name="choose">Chọn quận</string>
+
+    <!-- List Area -->
+
+    <string name="area01">Ba Đình</string>
+    <string name="area02">Bắc Từ Liêm</string>
+    <string name="area03">Cầu Giấy</string>
+    <string name="area04">Đống Đa</string>
+    <string name="area05">Hà Đông</string>
+    <string name="area06">Hai Bà Trưng</string>
+    <string name="area07">Hoàng Mai</string>
+    <string name="area08">Hoàn Kiếm</string>
+    <string name="area09">Long Biên</string>
+    <string name="area10">Nam Từ Liêm</string>
+    <string name="area11">Tây Hồ</string>
+    <string name="area12">Thanh Xuân</string>
 </resources>

@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.lnthe54.foodshare.R;
-import com.example.lnthe54.foodshare.model.Food;
+import com.example.lnthe54.foodshare.model.Foods;
 import com.example.lnthe54.foodshare.utils.ConfigFood;
 import com.example.lnthe54.foodshare.view.activity.DetailFoodActivity;
 import com.example.lnthe54.foodshare.view.activity.MapsActivity;
@@ -35,7 +35,7 @@ public class FragmentDetailFood extends Fragment
         return instance;
     }
 
-    public static FragmentDetailFood getInstance(Food food) {
+    public static FragmentDetailFood getInstance(Foods food) {
         if (instance == null) {
             instance = new FragmentDetailFood();
         }
@@ -47,9 +47,9 @@ public class FragmentDetailFood extends Fragment
         return instance;
     }
 
-    private Food food;
+    private Foods food;
     private String foodImg;
-    private int foodPrice;
+    private String foodPrice;
     private String foodTime;
     private String foodAddress;
     private String foodDesc;
@@ -66,7 +66,7 @@ public class FragmentDetailFood extends Fragment
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            food = (Food) getArguments().getSerializable(ConfigFood.FOOD_OBJECT);
+            food = (Foods) getArguments().getSerializable(ConfigFood.FOOD_OBJECT);
         }
     }
 
@@ -92,9 +92,9 @@ public class FragmentDetailFood extends Fragment
     private void addEvents() {
         foodImg = food.getFoodImg();
         foodPrice = food.getFoodPrice();
-        foodTime = food.getTime();
-        foodAddress = food.getAddress();
-        foodDesc = food.getDescription();
+        foodTime = food.getFoodTime();
+        foodAddress = food.getFoodAddress();
+        foodDesc = food.getFoodDesc();
 
         Glide.with(getContext()).load(foodImg).into(ivFood);
         tvPrice.setText(foodPrice + "K");

@@ -1,5 +1,6 @@
 package com.example.lnthe54.foodshare.view.fragment;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -15,10 +16,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.lnthe54.foodshare.R;
+import com.example.lnthe54.foodshare.adapter.AreaAdapter;
 import com.example.lnthe54.foodshare.model.Messages;
 import com.example.lnthe54.foodshare.service.APIService;
 import com.example.lnthe54.foodshare.utils.ReadPathUtil;
@@ -43,7 +48,7 @@ import static android.app.Activity.RESULT_OK;
  * @author lnthe54 on 11/10/2018
  * @project FoodShare
  */
-public class FragmentPost extends Fragment {
+public class FragmentPost extends Fragment implements AreaAdapter.CallBack {
     private static final int REQUEST_CODE = 0;
     private static final String TAG = "FragmentPost";
     private static final String UPLOAD_URL = "http://192.168.1.244/androidwebservice/adddata.php/";
@@ -88,6 +93,9 @@ public class FragmentPost extends Fragment {
     @BindView(R.id.img_food)
     ImageView imageView;
 
+    @BindView(R.id.tv_choose_area)
+    TextView tvChooseArea;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -102,6 +110,31 @@ public class FragmentPost extends Fragment {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
         startActivityForResult(intent, REQUEST_CODE);
+    }
+
+    @OnClick(R.id.tv_choose_area)
+    public void chooseArea() {
+        openAlertDialog();
+    }
+
+    private void openAlertDialog() {
+        final Dialog dialogArea = new Dialog(getContext(), R.style.Theme_AppCompat_DayNight_Dialog_Alert);
+        dialogArea.setContentView(R.layout.layout_choose_area);
+
+        RadioGroup radioGroup = dialogArea.findViewById(R.id.radio_group);
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkID) {
+                RadioButton rb = radioGroup.findViewById(checkID);
+                if (rb != null && checkID > -1) {
+                    tvChooseArea.setText(rb.getText().toString());
+                    areaID = radioGroup.indexOfChild(rb) + 1;
+                    dialogArea.cancel();
+                }
+            }
+        });
+        dialogArea.show();
     }
 
     @Override
@@ -136,14 +169,15 @@ public class FragmentPost extends Fragment {
         foodTime = etTime.getText().toString();
         foodAdd = etAddress.getText().toString();
         foodDesc = etDesc.getText().toString();
-        areaID = 1;
         imgCode = getBitMap(bitmap);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(UPLOAD_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         APIService apiUpload = retrofit.create(APIService.class);
-        Call<Messages> call = apiUpload.uploadFood(foodName, foodPrice, imgCode, imgName, foodTime, foodAdd, foodDesc, areaID);
+        Log.d(TAG, "Index: " + areaID);
+        Call<Messages> call = apiUpload.uploadFood(foodName, foodPrice, imgCode, imgName, foodTime,
+                foodAdd, foodDesc, areaID);
         call.enqueue(new Callback<Messages>() {
             @Override
             public void onResponse(Call<Messages> call, Response<Messages> response) {
@@ -167,5 +201,10 @@ public class FragmentPost extends Fragment {
         super.onDestroyView();
 
         unbinder.unbind();
+    }
+
+    @Override
+    public void itemAreaClick(int position) {
+
     }
 }
