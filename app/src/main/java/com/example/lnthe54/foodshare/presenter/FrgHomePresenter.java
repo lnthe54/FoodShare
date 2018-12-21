@@ -13,17 +13,11 @@ public class FrgHomePresenter {
         this.callBack = callBack;
     }
 
-    public void initDots() {
-        callBack.initDots();
-    }
-
     public void getArea(JSONArray jsonArray) {
         callBack.getArea(jsonArray);
     }
 
     public interface CallBack {
         void getArea(JSONArray jsonArray);
-
-        void initDots();
     }
 }

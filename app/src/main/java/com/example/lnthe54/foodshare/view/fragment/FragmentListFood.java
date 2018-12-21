@@ -22,6 +22,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.lnthe54.foodshare.R;
 import com.example.lnthe54.foodshare.adapter.FoodAdapter;
 import com.example.lnthe54.foodshare.model.Foods;
+import com.example.lnthe54.foodshare.presenter.FrgListFoodPresenter;
 import com.example.lnthe54.foodshare.utils.ConfigArea;
 import com.example.lnthe54.foodshare.utils.ConfigFood;
 import com.example.lnthe54.foodshare.view.activity.DetailFoodActivity;
@@ -39,7 +40,7 @@ import java.util.Map;
  * @project FoodShare
  */
 public class FragmentListFood extends Fragment
-        implements FoodAdapter.CallBack {
+        implements FoodAdapter.CallBack, FrgListFoodPresenter.Callback {
     public static FragmentListFood instance;
 
     public static FragmentListFood getInstance(long areaID) {
@@ -53,6 +54,7 @@ public class FragmentListFood extends Fragment
         return instance;
     }
 
+    private FrgListFoodPresenter frgListFoodPresenter;
     private View view;
     private long areaID;
     private String urlGetFood;
@@ -77,7 +79,7 @@ public class FragmentListFood extends Fragment
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_list_food, container, false);
-
+        frgListFoodPresenter = new FrgListFoodPresenter(this);
         initViews(view);
         readData(urlGetFood);
 
@@ -91,26 +93,6 @@ public class FragmentListFood extends Fragment
         rvListFood.setHasFixedSize(true);
     }
 
-    private void getData(JSONArray jsonArray) {
-
-        listFood = new ArrayList<>();
-
-        for (int i = 0; i < jsonArray.length(); i++) {
-            try {
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                listFood.add(new Foods(jsonObject.getLong("id"), jsonObject.getString("name"),
-                        jsonObject.getString("price"), jsonObject.getString("img"),
-                        jsonObject.getString("time"), jsonObject.getString("address"),
-                        jsonObject.getString("description")));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-
-        foodAdapter = new FoodAdapter(this, listFood);
-        rvListFood.setAdapter(foodAdapter);
-    }
-
     private void readData(String urlGetFood) {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urlGetFood,
@@ -119,7 +101,7 @@ public class FragmentListFood extends Fragment
                     public void onResponse(String response) {
                         try {
                             JSONArray jsonArray = new JSONArray(response);
-                            getData(jsonArray);
+                            frgListFoodPresenter.getData(jsonArray);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -188,5 +170,25 @@ public class FragmentListFood extends Fragment
         openDetail.putExtra(ConfigFood.FOOD_OBJECT, food);
         startActivity(openDetail);
         getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.no_change);
+    }
+
+    @Override
+    public void getData(JSONArray jsonArray) {
+        listFood = new ArrayList<>();
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+            try {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                listFood.add(new Foods(jsonObject.getLong("id"), jsonObject.getString("name"),
+                        jsonObject.getString("price"), jsonObject.getString("img"),
+                        jsonObject.getString("time"), jsonObject.getString("address"),
+                        jsonObject.getString("description")));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        foodAdapter = new FoodAdapter(this, listFood);
+        rvListFood.setAdapter(foodAdapter);
     }
 }
