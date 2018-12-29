@@ -2,7 +2,6 @@ package com.example.lnthe54.foodshare.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,6 @@ import java.util.List;
  */
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
 
-    private static final String TAG = "PostAdapter";
     private List<Foods> listFood;
 
     public PostAdapter(List<Foods> listFood) {
@@ -49,7 +47,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
 
     @Override
     public int getItemCount() {
-        Log.d(TAG, "getItemCount: " + listFood.size());
         return listFood.size();
     }
 

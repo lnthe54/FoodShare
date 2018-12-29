@@ -20,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.lnthe54.foodshare.R;
+import com.example.lnthe54.foodshare.utils.ConfigIP;
 import com.example.lnthe54.foodshare.utils.ConfigUser;
 import com.example.lnthe54.foodshare.view.activity.MainActivity;
 
@@ -46,7 +47,7 @@ public class FragmentSignIn extends Fragment implements View.OnClickListener {
     private EditText etPass;
     private Button btnLogin;
 
-    private String urlUser = "http://192.168.1.244/androidwebservice/getuser.php";
+    private String urlUser = "http://" + ConfigIP.IP_ADDRESS + "/androidwebservice/getuser.php";
     private String nameUser;
     private String passwordUser;
 
@@ -75,7 +76,8 @@ public class FragmentSignIn extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_login: {
-                loginUser();
+//                loginUser();
+                openMainActivity();
             }
         }
     }

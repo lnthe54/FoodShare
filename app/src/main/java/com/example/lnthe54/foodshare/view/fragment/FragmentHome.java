@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
@@ -28,6 +30,7 @@ import com.example.lnthe54.foodshare.R;
 import com.example.lnthe54.foodshare.adapter.AreaAdapter;
 import com.example.lnthe54.foodshare.model.Area;
 import com.example.lnthe54.foodshare.presenter.FrgHomePresenter;
+import com.example.lnthe54.foodshare.utils.ConfigIP;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,6 +47,11 @@ public class FragmentHome extends Fragment
         implements FrgHomePresenter.CallBack, AreaAdapter.CallBack, View.OnClickListener,
         BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
+    private static final String TITLE_BANNER1 = "Súp";
+    private static final String TITLE_BANNER2 = "Bánh Kem";
+    private static final String TITLE_BANNER3 = "Bánh";
+    private static final String TITLE_BANNER4 = "Đồ Uống";
+    private static final String TITLE_BANNER5 = "Món Chiên";
     public static FragmentHome instance;
 
     public static FragmentHome getInstance() {
@@ -74,7 +82,7 @@ public class FragmentHome extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        urlArea = "http://192.168.1.244/androidwebservice/getArea.php";
+        urlArea = "http://" + ConfigIP.IP_ADDRESS + "/androidwebservice/getArea.php";
 
         frgHomePresenter = new FrgHomePresenter(this);
         setHasOptionsMenu(true);
@@ -89,24 +97,27 @@ public class FragmentHome extends Fragment
         rvListArea = view.findViewById(R.id.list_area);
         rvListArea.setLayoutManager(new GridLayoutManager(getContext(), SPAN_COUNT));
         rvListArea.setHasFixedSize(true);
+        LayoutAnimationController controller = AnimationUtils.loadLayoutAnimation(rvListArea.getContext(), R.anim.layout_fall_down);
+        rvListArea.setLayoutAnimation(controller);
 
         btnList = view.findViewById(R.id.btn_list);
         btnGird = view.findViewById(R.id.btn_gird);
     }
 
     private void addEvents() {
-        initSliderBanner();
+        frgHomePresenter.initSliderBanner();
         initArea(urlArea);
     }
 
-    private void initSliderBanner() {
+    @Override
+    public void initSliderBanner() {
 
         HashMap<String, Integer> url_maps = new HashMap<>();
-        url_maps.put(String.valueOf(R.string.area01), R.drawable.banner1);
-        url_maps.put(String.valueOf(R.string.area02), R.drawable.banner2);
-        url_maps.put(String.valueOf(R.string.area03), R.drawable.banner3);
-        url_maps.put(String.valueOf(R.string.area04), R.drawable.banner4);
-        url_maps.put(String.valueOf(R.string.area05), R.drawable.banner5);
+        url_maps.put(TITLE_BANNER1, R.drawable.banner1);
+        url_maps.put(TITLE_BANNER2, R.drawable.banner2);
+        url_maps.put(TITLE_BANNER3, R.drawable.banner3);
+        url_maps.put(TITLE_BANNER4, R.drawable.banner4);
+        url_maps.put(TITLE_BANNER5, R.drawable.banner5);
 
         for (String name : url_maps.keySet()) {
             TextSliderView mTextSlider = new TextSliderView(getContext());
@@ -164,6 +175,7 @@ public class FragmentHome extends Fragment
 
         areaAdapter = new AreaAdapter(this, listArea);
         rvListArea.setAdapter(areaAdapter);
+        rvListArea.scheduleLayoutAnimation();
     }
 
     @Override
@@ -231,11 +243,5 @@ public class FragmentHome extends Fragment
     @Override
     public void onPageScrollStateChanged(int state) {
 
-    }
-
-    @Override
-    public void onStop() {
-        sliderBanner.stopAutoCycle();
-        super.onStop();
     }
 }

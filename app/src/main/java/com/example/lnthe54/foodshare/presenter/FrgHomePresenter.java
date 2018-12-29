@@ -17,7 +17,13 @@ public class FrgHomePresenter {
         callBack.getArea(jsonArray);
     }
 
+    public void initSliderBanner() {
+        callBack.initSliderBanner();
+    }
+
     public interface CallBack {
         void getArea(JSONArray jsonArray);
+
+        void initSliderBanner();
     }
 }

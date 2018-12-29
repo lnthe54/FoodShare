@@ -13,7 +13,8 @@ import retrofit2.http.POST;
  */
 public interface APIService {
     @FormUrlEncoded
-    @POST("adddata.php")
+    @POST("upload.php")
+
     Call<Messages> uploadFood(
             @Field("food_name") String foodName,
             @Field("food_price") String foodPrice,

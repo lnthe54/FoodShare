@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <selector>
+
+        <item
+            android:drawable="@drawable/ic_favorite_fit"
+            android:state_pressed="true"></item>
+        <item
+            android:drawable="@drawable/ic_favorite_hit"
+            android:state_focused="false"></item>
+
+    </selector>
+</set>

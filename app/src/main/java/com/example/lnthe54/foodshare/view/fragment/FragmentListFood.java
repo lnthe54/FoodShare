@@ -25,6 +25,7 @@ import com.example.lnthe54.foodshare.model.Foods;
 import com.example.lnthe54.foodshare.presenter.FrgListFoodPresenter;
 import com.example.lnthe54.foodshare.utils.ConfigArea;
 import com.example.lnthe54.foodshare.utils.ConfigFood;
+import com.example.lnthe54.foodshare.utils.ConfigIP;
 import com.example.lnthe54.foodshare.view.activity.DetailFoodActivity;
 
 import org.json.JSONArray;
@@ -67,8 +68,8 @@ public class FragmentListFood extends Fragment
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        urlGetFood = "http://192.168.1.244/androidwebservice/demogetdatafood.php";
-        urlDelFood = "http://192.168.1.244/androidwebservice/delete.php";
+        urlGetFood = "http://" + ConfigIP.IP_ADDRESS + "/androidwebservice/demogetdatafood.php";
+        urlDelFood = "http://" + ConfigIP.IP_ADDRESS + "/androidwebservice/delete.php";
 
         if (getArguments() != null) {
             areaID = getArguments().getLong(ConfigArea.AREA_ID);

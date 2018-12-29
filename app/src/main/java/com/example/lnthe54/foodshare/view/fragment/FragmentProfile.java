@@ -20,6 +20,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.lnthe54.foodshare.R;
 import com.example.lnthe54.foodshare.adapter.PostAdapter;
 import com.example.lnthe54.foodshare.model.Foods;
+import com.example.lnthe54.foodshare.utils.ConfigIP;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,7 +46,7 @@ public class FragmentProfile extends Fragment {
     }
 
     private View view;
-    private String urlGet = "http://192.168.1.244/androidwebservice/getpost.php";
+    private String urlGet = "http://" + ConfigIP.IP_ADDRESS + "/androidwebservice/getpost.php";
     private ArrayList<Foods> listFood;
     private RecyclerView rvListFood;
     private PostAdapter postAdapter;

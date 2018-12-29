@@ -4,18 +4,21 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.lnthe54.foodshare.R;
 import com.example.lnthe54.foodshare.model.Foods;
 import com.example.lnthe54.foodshare.utils.ConfigFood;
+import com.example.lnthe54.foodshare.utils.ConfigIP;
 
 /**
  * @author lnthe54 on 11/10/2018
@@ -24,6 +27,7 @@ import com.example.lnthe54.foodshare.utils.ConfigFood;
 public class DetailFoodActivity extends AppCompatActivity implements View.OnClickListener {
 
     public android.support.v7.widget.Toolbar toolbar;
+    private RelativeLayout relativeLayout;
     private Foods food;
     private String foodName;
     private String foodImg;
@@ -37,6 +41,9 @@ public class DetailFoodActivity extends AppCompatActivity implements View.OnClic
     private TextView tvAddress;
     private TextView tvDesc;
     private TextView tvDirection;
+    private Snackbar snackbar;
+
+    private boolean isFavorite = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,6 +73,7 @@ public class DetailFoodActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void initViews() {
+        relativeLayout = findViewById(R.id.relative_layout);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(foodName);
@@ -80,7 +88,10 @@ public class DetailFoodActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void addEvent() {
-        Glide.with(this).load(foodImg).into(ivFood);
+        String pathImg = foodImg.substring(foodImg.indexOf("/and"), foodImg.length());
+        String mPath = "http://" + ConfigIP.IP_ADDRESS + pathImg;
+
+        Glide.with(this).load(mPath).into(ivFood);
         tvPrice.setText(foodPrice + "K");
         tvTime.setText(foodTime);
         tvAddress.setText(foodAddress);
@@ -101,6 +112,19 @@ public class DetailFoodActivity extends AppCompatActivity implements View.OnClic
             case android.R.id.home: {
                 finish();
                 break;
+            }
+            case R.id.ic_favorite: {
+                if (isFavorite) {
+                    item.setIcon(R.drawable.ic_favorite_fit);
+                    snackbar = Snackbar.make(relativeLayout, "Đã thêm", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                    isFavorite = false;
+                } else {
+                    item.setIcon(R.drawable.ic_favorite_hit);
+                    snackbar = Snackbar.make(relativeLayout, "Đã hủy", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                    isFavorite = true;
+                }
             }
         }
         return true;

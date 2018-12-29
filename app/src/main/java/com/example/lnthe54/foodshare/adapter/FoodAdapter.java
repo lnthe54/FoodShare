@@ -9,8 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.lnthe54.foodshare.R;
 import com.example.lnthe54.foodshare.model.Foods;
+import com.example.lnthe54.foodshare.utils.ConfigIP;
 
 import java.util.ArrayList;
 
@@ -19,6 +21,7 @@ import java.util.ArrayList;
  * @project FoodShare
  */
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
+    private static final String TAG = "FoodAdapter";
     private ArrayList<Foods> listFood;
     private CallBack callBack;
 
@@ -80,7 +83,15 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 
         public void bindData(Foods food) {
 
-            Glide.with(itemView.getContext()).load(food.getFoodImg()).into(ivFood);
+            String path = food.getFoodImg();
+            String pathImg = path.substring(path.indexOf("/and"), path.length());
+            String mPath = "http://" + ConfigIP.IP_ADDRESS + pathImg;
+
+            Glide.with(itemView.getContext())
+                    .applyDefaultRequestOptions(new RequestOptions()
+                            .error(R.drawable.food_default)
+                            .placeholder(R.drawable.food_default))
+                    .load(mPath).into(ivFood);
 
             tvFoodName.setText(food.getFoodName());
             tvFoodPrice.setText(food.getFoodPrice() + "K");

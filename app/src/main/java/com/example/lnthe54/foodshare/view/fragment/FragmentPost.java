@@ -10,7 +10,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +25,7 @@ import com.example.lnthe54.foodshare.R;
 import com.example.lnthe54.foodshare.adapter.AreaAdapter;
 import com.example.lnthe54.foodshare.model.Messages;
 import com.example.lnthe54.foodshare.service.APIService;
+import com.example.lnthe54.foodshare.utils.ConfigIP;
 import com.example.lnthe54.foodshare.utils.ReadPathUtil;
 
 import java.io.ByteArrayOutputStream;
@@ -50,9 +50,9 @@ import static android.app.Activity.RESULT_OK;
  */
 public class FragmentPost extends Fragment implements AreaAdapter.CallBack {
     private static final int REQUEST_CODE = 0;
-    private static final String TAG = "FragmentPost";
-    private static final String UPLOAD_URL = "http://192.168.1.244/androidwebservice/adddata.php/";
+    private static final String UPLOAD_URL = "http://" + ConfigIP.IP_ADDRESS + "/androidwebservice/upload.php/";
     private static String PATH = "";
+
     public static FragmentPost instance;
 
     public static FragmentPost getInstance() {
@@ -127,7 +127,7 @@ public class FragmentPost extends Fragment implements AreaAdapter.CallBack {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkID) {
                 RadioButton rb = radioGroup.findViewById(checkID);
-                if (rb != null && checkID > -1) {
+                if (rb != null) {
                     tvChooseArea.setText(rb.getText().toString());
                     areaID = radioGroup.indexOfChild(rb) + 1;
                     dialogArea.cancel();
@@ -164,26 +164,33 @@ public class FragmentPost extends Fragment implements AreaAdapter.CallBack {
 
     @OnClick(R.id.btn_post)
     public void uploadFood() {
+
         foodName = etName.getText().toString();
         foodPrice = etPrice.getText().toString();
         foodTime = etTime.getText().toString();
         foodAdd = etAddress.getText().toString();
         foodDesc = etDesc.getText().toString();
+
         imgCode = getBitMap(bitmap);
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(UPLOAD_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
         APIService apiUpload = retrofit.create(APIService.class);
-        Log.d(TAG, "Index: " + areaID);
         Call<Messages> call = apiUpload.uploadFood(foodName, foodPrice, imgCode, imgName, foodTime,
                 foodAdd, foodDesc, areaID);
+
         call.enqueue(new Callback<Messages>() {
             @Override
             public void onResponse(Call<Messages> call, Response<Messages> response) {
                 Messages message = response.body();
                 if (message.getMessage().equals("Success")) {
-                    Toast.makeText(getContext(), "Upload Success!", Toast.LENGTH_SHORT).show();
+
+                    getFragmentManager().beginTransaction()
+                            .replace(R.id.frame_layout, FragmentHome.getInstance())
+                            .commit();
                 } else {
                     Toast.makeText(getContext(), "Upload Failed!", Toast.LENGTH_SHORT).show();
                 }
@@ -191,7 +198,6 @@ public class FragmentPost extends Fragment implements AreaAdapter.CallBack {
 
             @Override
             public void onFailure(Call<Messages> call, Throwable t) {
-                Log.e(TAG, t.getMessage());
             }
         });
     }

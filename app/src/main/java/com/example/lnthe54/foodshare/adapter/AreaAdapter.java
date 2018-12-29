@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.lnthe54.foodshare.R;
 import com.example.lnthe54.foodshare.model.Area;
+import com.example.lnthe54.foodshare.utils.ConfigIP;
 
 import java.util.ArrayList;
 
@@ -66,9 +67,11 @@ public class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.AreaHolder> {
         }
 
         public void bindData(Area area) {
-            String pathImg = area.getImage();
+            String path = area.getImage();
+            String pathImg = path.substring(path.indexOf("/and"), path.length());
+            String mPath = "http://" + ConfigIP.IP_ADDRESS + pathImg;
             Glide.with(itemView.getContext())
-                    .load(pathImg)
+                    .load(mPath)
                     .into(ivArea);
             tvNameArea.setText(area.getName());
         }
