@@ -87,8 +87,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_save" />
-                            <entry key="sourceFile" value="C:\Users\lnthe54\AndroidStudioProjects\FoodShare\app\src\main\res\drawable\stand.svg" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="ic_dish" />
+                            <entry key="sourceFile" value="C:\Users\lnthe54\AndroidStudioProjects\FoodShare\app\src\main\res\drawable\dish.svg" />
                           </map>
                         </option>
                       </PersistentState>

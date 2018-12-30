@@ -44,16 +44,14 @@ public class Foods implements Serializable {
         this.foodDesc = foodDesc;
     }
 
-    public Foods(long id, String foodName, String foodPrice, String foodImg,
-                 String foodTime, String foodAddress, String foodDesc, int areaID) {
-        this.id = id;
+    public Foods(String foodName, String foodPrice, String foodImg,
+                 String foodTime, String foodAddress, String foodDesc) {
         this.foodName = foodName;
         this.foodPrice = foodPrice;
         this.foodImg = foodImg;
         this.foodTime = foodTime;
         this.foodAddress = foodAddress;
         this.foodDesc = foodDesc;
-        this.areaID = areaID;
     }
 
     public long getId() {

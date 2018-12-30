@@ -1,11 +1,13 @@
 package com.example.lnthe54.foodshare.view.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,11 +16,21 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.example.lnthe54.foodshare.R;
 import com.example.lnthe54.foodshare.model.Foods;
 import com.example.lnthe54.foodshare.utils.ConfigFood;
 import com.example.lnthe54.foodshare.utils.ConfigIP;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author lnthe54 on 11/10/2018
@@ -26,6 +38,7 @@ import com.example.lnthe54.foodshare.utils.ConfigIP;
  */
 public class DetailFoodActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String TAG = "DetailFoodActivity";
     public android.support.v7.widget.Toolbar toolbar;
     private RelativeLayout relativeLayout;
     private Foods food;
@@ -43,7 +56,9 @@ public class DetailFoodActivity extends AppCompatActivity implements View.OnClic
     private TextView tvDirection;
     private Snackbar snackbar;
 
+    private SharedPreferences preferences;
     private boolean isFavorite = true;
+    private String urlFavorite = "http://" + ConfigIP.IP_ADDRESS + "/androidwebservice/addfavorite.php";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,6 +69,8 @@ public class DetailFoodActivity extends AppCompatActivity implements View.OnClic
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             getWindow().setStatusBarColor(getResources().getColor(R.color.colorOrangeOpacity));
         }
+
+        preferences = getSharedPreferences("A", MODE_PRIVATE);
 
         getData();
         initViews();
@@ -114,20 +131,63 @@ public class DetailFoodActivity extends AppCompatActivity implements View.OnClic
                 break;
             }
             case R.id.ic_favorite: {
-                if (isFavorite) {
-                    item.setIcon(R.drawable.ic_favorite_fit);
-                    snackbar = Snackbar.make(relativeLayout, "Đã thêm", Snackbar.LENGTH_LONG);
-                    snackbar.show();
-                    isFavorite = false;
-                } else {
-                    item.setIcon(R.drawable.ic_favorite_hit);
-                    snackbar = Snackbar.make(relativeLayout, "Đã hủy", Snackbar.LENGTH_LONG);
-                    snackbar.show();
-                    isFavorite = true;
-                }
+                pressFavorite(item);
+
             }
         }
         return true;
+    }
+
+    private void pressFavorite(MenuItem item) {
+
+        if (isFavorite) {
+            item.setIcon(R.drawable.ic_favorite_fit);
+            addFavorite();
+        } else {
+            item.setIcon(R.drawable.ic_favorite_hit);
+            snackbar = Snackbar.make(relativeLayout, "Đã hủy", Snackbar.LENGTH_LONG);
+            snackbar.show();
+            isFavorite = true;
+        }
+    }
+
+    private void addFavorite() {
+        final RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlFavorite,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d(TAG, "onResponse: " + response);
+                        if (response.equals("success")) {
+                            snackbar = Snackbar.make(relativeLayout, "Đã thêm", Snackbar.LENGTH_LONG);
+                            snackbar.show();
+                            isFavorite = false;
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+
+                params.put(ConfigFood.FOOD_NAME, foodName);
+                params.put(ConfigFood.FOOD_PRICE, foodPrice);
+                params.put(ConfigFood.FOOD_IMG, foodImg);
+                params.put(ConfigFood.FOOD_TIME, foodTime);
+                params.put(ConfigFood.FOOD_ADDRESS, foodAddress);
+                params.put(ConfigFood.FOOD_DESC, foodDesc);
+                params.put(ConfigFood.FOOD_USER_ID, String.valueOf(1));
+
+                return params;
+            }
+        };
+
+        requestQueue.add(stringRequest);
     }
 
     @Override

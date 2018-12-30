@@ -1,15 +1,15 @@
 <resources>
     <string name="app_name">Ăn Vặt Hà Nội</string>
     <string name="tv_home">Home</string>
-    <string name="tv_search">Search</string>
-    <string name="tv_favorite">Favorite</string>
-    <string name="tv_other">Other</string>
-    <string name="tv_setting">Setting</string>
-    <string name="tv_log_out">Log Out</string>
+    <string name="tv_search">Tìm kiếm</string>
+    <string name="tv_favorite">Yêu thích</string>
+    <string name="tv_other">Khác</string>
+    <string name="tv_setting">Cài đặt</string>
+    <string name="tv_log_out">Đăng xuất</string>
     <string name="tv_title_tb">Title</string>
-    <string name="tv_add">Post</string>
-    <string name="tv_notification">Notification</string>
-    <string name="tv_profile">Profile</string>
+    <string name="tv_add">Đăng bài</string>
+    <string name="tv_notification">Thông báo</string>
+    <string name="tv_profile">Tôi</string>
     <string name="tv_name_account">Le Ngoc The</string>
     <string name="tv_filter">Filter</string>
     <string name="tv_open">Open</string>
@@ -73,4 +73,6 @@
     <string name="area11">Tây Hồ</string>
     <string name="area12">Thanh Xuân</string>
     <string name="tv_location">Ha Noi</string>
+
+    <string name="notification">Thêm món yêu thích</string>
 </resources>

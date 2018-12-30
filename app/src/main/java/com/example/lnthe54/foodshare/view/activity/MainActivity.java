@@ -20,6 +20,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.example.lnthe54.foodshare.R;
+import com.example.lnthe54.foodshare.view.fragment.FragmentFavorite;
 import com.example.lnthe54.foodshare.view.fragment.FragmentHome;
 import com.example.lnthe54.foodshare.view.fragment.FragmentNotifi;
 import com.example.lnthe54.foodshare.view.fragment.FragmentPost;
@@ -28,7 +29,6 @@ import com.example.lnthe54.foodshare.view.fragment.FragmentSearch;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
 
     public Toolbar toolbar;
     private DrawerLayout drawerLayout;
@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -53,8 +52,6 @@ public class MainActivity extends AppCompatActivity
         showFragment(FragmentHome.getInstance());
         addEvents();
     }
-
-
 
     private void initViews() {
 
@@ -120,13 +117,11 @@ public class MainActivity extends AppCompatActivity
                         return true;
                     }
 
-
                     case R.id.bottom_nav_notifi: {
                         tvTitle.setText(R.string.tv_notification);
                         showFragment(FragmentNotifi.getInstance());
                         return true;
                     }
-
 
                     case R.id.bottom_nav_profile: {
                         tvTitle.setText(R.string.tv_profile);
@@ -155,7 +150,8 @@ public class MainActivity extends AppCompatActivity
                 break;
             }
             case R.id.drawer_favorite: {
-                //TODO
+                tvTitle.setText(R.string.tv_favorite);
+                showFragment(FragmentFavorite.getInstance());
                 break;
             }
             case R.id.drawer_setting: {

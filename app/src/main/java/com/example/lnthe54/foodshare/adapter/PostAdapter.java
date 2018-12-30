@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.lnthe54.foodshare.R;
 import com.example.lnthe54.foodshare.model.Foods;
+import com.example.lnthe54.foodshare.utils.ConfigIP;
 
 import java.util.List;
 
@@ -38,8 +39,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
     public void onBindViewHolder(@NonNull PostHolder postHolder, int position) {
         Foods food = listFood.get(position);
 
+        String path = food.getFoodImg();
+        String pathImg = path.substring(path.indexOf("/and"), path.length());
+        String mPath = "http://" + ConfigIP.IP_ADDRESS + pathImg;
+
         Glide.with(postHolder.itemView.getContext())
-                .load(food.getFoodImg())
+                .load(mPath)
                 .into(postHolder.ivFood);
 
         postHolder.tvLocation.setText(food.getFoodAddress());
