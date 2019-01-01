@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity
     private NavigationView nav;
     private BottomNavigationView bottomTB;
     private ActionBarDrawerToggle drawerToggle;
-    private TextView tvTitle;
+    public static TextView tvTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

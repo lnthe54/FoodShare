@@ -109,7 +109,7 @@ public class DetailFoodActivity extends AppCompatActivity implements View.OnClic
         String mPath = "http://" + ConfigIP.IP_ADDRESS + pathImg;
 
         Glide.with(this).load(mPath).into(ivFood);
-        tvPrice.setText(foodPrice + "K");
+        tvPrice.setText(foodPrice);
         tvTime.setText(foodTime);
         tvAddress.setText(foodAddress);
         tvDesc.setText(foodDesc);

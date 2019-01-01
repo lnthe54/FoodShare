@@ -22,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_name_food"
+            android:hint="@string/hint_name"
             android:inputType="text" />
 
         <TextView
@@ -37,8 +38,10 @@
         <ImageView
             android:id="@+id/img_food"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="350dp"
             android:layout_below="@id/tv_image"
+            android:padding="10dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/default_img" />
 
         <TextView
@@ -56,7 +59,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_price_food"
-            android:inputType="text" />
+            android:hint="@string/hint_price"
+            android:inputType="numberDecimal" />
 
         <TextView
             android:id="@+id/tv_time_food"
@@ -68,19 +72,56 @@
             android:text="@string/tv_time"
             android:textColor="@color/colorOrange" />
 
-        <EditText
-            android:id="@+id/et_time"
+        <LinearLayout
+            android:id="@+id/layout_settime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_time_food"
-            android:inputType="text" />
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+                android:id="@+id/tv_time_start"
+                style="?android:textAppearanceSmall"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_btn_post"
+                android:gravity="center"
+                android:text="@string/hint_time_start"
+                android:textColor="@color/colorWhite" />
+
+            <TextView
+                style="?android:textAppearanceMedium"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="-"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/tv_time_end"
+                style="?android:textAppearanceSmall"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_btn_post"
+                android:gravity="center"
+                android:text="@string/hint_time_start"
+                android:textColor="@color/colorWhite" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tv_address_food"
             style="?android:textAppearanceMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/et_time"
+            android:layout_below="@id/layout_settime"
             android:layout_marginTop="5dp"
             android:text="@string/tv_address"
             android:textColor="@color/colorOrange" />
@@ -90,6 +131,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_address_food"
+            android:hint="@string/hint_address"
             android:inputType="text" />
 
 
@@ -111,8 +153,8 @@
             android:drawableRight="@drawable/ic_chevron_right"
             android:gravity="center_vertical"
             android:padding="10dp"
-            android:textColor="@color/colorBlack"
-            android:text="@string/choose"></TextView>
+            android:text="@string/choose"
+            android:textColor="@color/colorBlack"></TextView>
 
         <TextView
             android:id="@+id/tv_description_food"
@@ -129,16 +171,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_description_food"
+            android:hint="@string/hint_desc"
             android:inputType="text" />
 
         <Button
             android:id="@+id/btn_post"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/et_description"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_margin="10dp"
             android:background="@drawable/custom_btn_post"
             android:text="@string/btn_post"
             android:textColor="@color/colorWhite" />

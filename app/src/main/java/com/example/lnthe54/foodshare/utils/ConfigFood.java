@@ -14,4 +14,15 @@ public interface ConfigFood {
     String FOOD_ADDRESS = "food_address";
     String FOOD_DESC = "food_description";
     String FOOD_USER_ID = "id_user";
+
+    String GET_ID = "id";
+    String GET_NAME = "name";
+    String GET_PRICE = "price";
+    String GET_IMAGE = "img";
+    String GET_TIME = "time";
+    String GET_ADD = "address";
+    String GET_DESC = "description";
+    String GET_USER = "userID";
+    String GET_AREA = "areaID";
+
 }

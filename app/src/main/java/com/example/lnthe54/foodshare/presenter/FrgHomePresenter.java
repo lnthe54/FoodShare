@@ -17,6 +17,9 @@ public class FrgHomePresenter {
         callBack.getArea(jsonArray);
     }
 
+    public void getListFood(JSONArray jsonArray) {
+        callBack.getListFood(jsonArray);
+    }
     public void initSliderBanner() {
         callBack.initSliderBanner();
     }
@@ -24,6 +27,7 @@ public class FrgHomePresenter {
     public interface CallBack {
         void getArea(JSONArray jsonArray);
 
+        void getListFood(JSONArray jsonArray);
         void initSliderBanner();
     }
 }

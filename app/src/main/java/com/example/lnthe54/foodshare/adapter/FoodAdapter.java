@@ -21,7 +21,6 @@ import java.util.ArrayList;
  * @project FoodShare
  */
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
-    private static final String TAG = "FoodAdapter";
     private ArrayList<Foods> listFood;
     private CallBack callBack;
 
@@ -82,7 +81,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         }
 
         public void bindData(Foods food) {
-
             String path = food.getFoodImg();
             String pathImg = path.substring(path.indexOf("/and"), path.length());
             String mPath = "http://" + ConfigIP.IP_ADDRESS + pathImg;
@@ -94,7 +92,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
                     .load(mPath).into(ivFood);
 
             tvFoodName.setText(food.getFoodName());
-            tvFoodPrice.setText(food.getFoodPrice() + "K");
+            tvFoodPrice.setText(food.getFoodPrice());
             tvFoodTime.setText(food.getFoodTime());
             tvFoodAddress.setText(food.getFoodAddress());
         }

@@ -1,5 +1,6 @@
 package com.example.lnthe54.foodshare.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -22,7 +23,9 @@ import com.example.lnthe54.foodshare.R;
 import com.example.lnthe54.foodshare.adapter.FoodAdapter;
 import com.example.lnthe54.foodshare.model.Foods;
 import com.example.lnthe54.foodshare.presenter.FrgFavoritePresenter;
+import com.example.lnthe54.foodshare.utils.ConfigFood;
 import com.example.lnthe54.foodshare.utils.ConfigIP;
+import com.example.lnthe54.foodshare.view.activity.DetailFoodActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -105,9 +108,10 @@ public class FragmentFavorite extends Fragment implements FoodAdapter.CallBack, 
         for (int i = 0; i < jsonArray.length(); i++) {
             try {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                listFoodFavorite.add(new Foods(jsonObject.getInt("id"), jsonObject.getString("name"), jsonObject.getString("price"),
-                        jsonObject.getString("img"), jsonObject.getString("time"), jsonObject.getString("address"),
-                        jsonObject.getString("description")));
+                listFoodFavorite.add(new Foods(jsonObject.getInt(ConfigFood.GET_ID), jsonObject.getString(ConfigFood.GET_NAME),
+                        jsonObject.getString(ConfigFood.GET_PRICE), jsonObject.getString(ConfigFood.GET_IMAGE),
+                        jsonObject.getString(ConfigFood.GET_TIME), jsonObject.getString(ConfigFood.GET_ADD),
+                        jsonObject.getString(ConfigFood.GET_DESC)));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -130,11 +134,19 @@ public class FragmentFavorite extends Fragment implements FoodAdapter.CallBack, 
 
     @Override
     public void itemClick(int position) {
-
+        openDetailActivity(position);
     }
 
     @Override
     public void itemLongClick(int position) {
+        //TODO
+    }
 
+    private void openDetailActivity(int position) {
+        Intent openDetailActivity = new Intent(getContext(), DetailFoodActivity.class);
+        Foods foods = listFoodFavorite.get(position);
+        openDetailActivity.putExtra(ConfigFood.FOOD_OBJECT, foods);
+        startActivity(openDetailActivity);
+        getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.no_change);
     }
 }

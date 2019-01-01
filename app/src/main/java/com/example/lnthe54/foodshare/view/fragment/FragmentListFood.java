@@ -180,10 +180,10 @@ public class FragmentListFood extends Fragment
         for (int i = 0; i < jsonArray.length(); i++) {
             try {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                listFood.add(new Foods(jsonObject.getLong("id"), jsonObject.getString("name"),
-                        jsonObject.getString("price"), jsonObject.getString("img"),
-                        jsonObject.getString("time"), jsonObject.getString("address"),
-                        jsonObject.getString("description")));
+                listFood.add(new Foods(jsonObject.getLong(ConfigFood.GET_ID), jsonObject.getString(ConfigFood.GET_NAME),
+                        jsonObject.getString(ConfigFood.GET_PRICE), jsonObject.getString(ConfigFood.GET_IMAGE),
+                        jsonObject.getString(ConfigFood.GET_TIME), jsonObject.getString(ConfigFood.GET_ADD),
+                        jsonObject.getString(ConfigFood.GET_DESC)));
             } catch (JSONException e) {
                 e.printStackTrace();
             }

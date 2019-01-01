@@ -15,14 +15,16 @@
     <string name="tv_open">Open</string>
     <string name="tv_close">Close</string>
     <string name="et_search">Search a here...</string>
-    <string name="tv_name">Food name *</string>
-    <string name="tv_image">Picture *</string>
-    <string name="tv_price">Price *</string>
-    <string name="tv_address">Address *</string>
-    <string name="tv_area">Area *</string>
-    <string name="tv_description">Description *</string>
-    <string name="btn_post">Post</string>
-    <string name="tv_notifi">No notification</string>
+    <string name="tv_name">Tên món ăn *</string>
+    <string name="tv_image">Hình ảnh *</string>
+    <string name="tv_price">Giá *</string>
+    <string name="tv_time">Thời gian *</string>
+    <string name="tv_address">Địa chỉ *</string>
+    <string name="tv_area">Quận, huyện *</string>
+    <string name="choose">Chọn quận</string>
+    <string name="tv_description">Mô tả món ăn *</string>
+    <string name="btn_post">Đăng Món Ăn</string>
+    <string name="tv_notifi">Không có thông báo</string>
     <string name="tv_filter_area">By Area</string>
     <string name="tv_filter_all">By All</string>
     <string name="tv_direction">Direction</string>
@@ -55,8 +57,6 @@
     <string name="tv_list">Danh sách</string>
     <string name="tv_grid">Lưới</string>
     <string name="type_view">Kiểu Xem</string>
-    <string name="tv_time">Time *</string>
-    <string name="choose">Chọn quận</string>
 
     <!-- List Area -->
 
@@ -75,4 +75,11 @@
     <string name="tv_location">Ha Noi</string>
 
     <string name="notification">Thêm món yêu thích</string>
+    <string name="tv_all_food">Tất cả món ăn</string>
+    <string name="tv_list_area">Tất cả các quận</string>
+    <string name="hint_name">E.g: Nem Phung</string>
+    <string name="hint_price">E.g: VND 50,000</string>
+    <string name="hint_address">E.g: Số nhà 22, Phố Nguyễn Thái Học, Thị Trấn Phùng</string>
+    <string name="hint_desc">Món ăn đặc sản của Thị Trấn Phùng</string>
+    <string name="hint_time_start">0:00 AM</string>
 </resources>

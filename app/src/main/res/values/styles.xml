@@ -13,4 +13,13 @@
     <style name="TransparentTextToolbar" parent="@android:style/TextAppearance">
         <item name="android:textColor">#00666666</item>
     </style>
+
+    <style name="CustomDialog" parent="android:Theme.DeviceDefault.Dialog">
+        <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
+        <item name="DialogTitleText">Tải lên ...</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="DialogSpotColor">@color/colorPrimary</item>
+        <item name="DialogSpotCount">8</item>
+        <item name="android:background">@color/colorWhite</item>
+    </style>
 </resources>
