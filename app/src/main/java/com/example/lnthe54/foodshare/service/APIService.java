@@ -25,4 +25,14 @@ public interface APIService {
             @Field("food_description") String foodDesc,
             @Field("area_id") int areaID
     );
+
+    @FormUrlEncoded
+    @POST("register.php")
+    Call<Messages> register(
+            @Field("imageCode") String imgCode,
+            @Field("img_user") String imgUser,
+            @Field("name_user") String nameUser,
+            @Field("mail_user") String mailUser,
+            @Field("password_user") String passwordUser
+    );
 }

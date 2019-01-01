@@ -59,7 +59,6 @@ import static android.app.Activity.RESULT_OK;
 public class FragmentPost extends Fragment implements AreaAdapter.CallBack {
     private static final int REQUEST_CODE = 0;
     private static final String UPLOAD_URL = "http://" + ConfigIP.IP_ADDRESS + "/androidwebservice/upload.php/";
-    private static final String TAG = "FragmentPost";
     private static String SET_TIME = "Chọn thời gian";
     private static String PATH = "";
 

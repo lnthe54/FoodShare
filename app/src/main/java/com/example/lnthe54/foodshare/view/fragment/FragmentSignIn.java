@@ -5,12 +5,13 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -46,6 +47,7 @@ public class FragmentSignIn extends Fragment implements View.OnClickListener {
     private EditText etUser;
     private EditText etPass;
     private Button btnLogin;
+    private TextView linkRegister;
 
     private String urlUser = "http://" + ConfigIP.IP_ADDRESS + "/androidwebservice/getuser.php";
     private String nameUser;
@@ -64,20 +66,28 @@ public class FragmentSignIn extends Fragment implements View.OnClickListener {
         etUser = view.findViewById(R.id.et_username);
         etPass = view.findViewById(R.id.et_password);
         btnLogin = view.findViewById(R.id.btn_login);
+        linkRegister = view.findViewById(R.id.link_register);
     }
 
     private void addEvent() {
         etUser.setText(nameUser);
         etPass.setText(passwordUser);
         btnLogin.setOnClickListener(this);
+        linkRegister.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_login: {
-//                loginUser();
-                openMainActivity();
+                loginUser();
+//                openMainActivity();
+                break;
+            }
+
+            case R.id.link_register: {
+                openFragmentRegister();
+                break;
             }
         }
     }
@@ -93,11 +103,8 @@ public class FragmentSignIn extends Fragment implements View.OnClickListener {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        if (response.trim().equalsIgnoreCase("login success")) {
-                            Toast.makeText(getContext(), "Login Success", Toast.LENGTH_SHORT).show();
+                        if (response.equals("Success")) {
                             openMainActivity();
-                        } else {
-                            Toast.makeText(getContext(), "Login Fail", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
@@ -111,7 +118,7 @@ public class FragmentSignIn extends Fragment implements View.OnClickListener {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
 
-                params.put(ConfigUser.USER_NAME, etUser.getText().toString().trim());
+                params.put(ConfigUser.MAIL_USER, etUser.getText().toString().trim());
                 params.put(ConfigUser.PASSWORD_USER, etPass.getText().toString().trim());
 
                 return params;
@@ -119,5 +126,12 @@ public class FragmentSignIn extends Fragment implements View.OnClickListener {
         };
 
         requestQueue.add(stringRequest);
+    }
+
+    private void openFragmentRegister() {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_layout, FragmentSignUp.getInstance());
+        transaction.setCustomAnimations(android.R.anim.slide_out_right, android.R.anim.slide_in_left);
+        transaction.commit();
     }
 }
