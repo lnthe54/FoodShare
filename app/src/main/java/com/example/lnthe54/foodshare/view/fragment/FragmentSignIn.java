@@ -50,8 +50,6 @@ public class FragmentSignIn extends Fragment implements View.OnClickListener {
     private TextView linkRegister;
 
     private String urlUser = "http://" + ConfigIP.IP_ADDRESS + "/androidwebservice/getuser.php";
-    private String nameUser;
-    private String passwordUser;
 
     @Nullable
     @Override
@@ -70,8 +68,6 @@ public class FragmentSignIn extends Fragment implements View.OnClickListener {
     }
 
     private void addEvent() {
-        etUser.setText(nameUser);
-        etPass.setText(passwordUser);
         btnLogin.setOnClickListener(this);
         linkRegister.setOnClickListener(this);
     }
@@ -103,9 +99,7 @@ public class FragmentSignIn extends Fragment implements View.OnClickListener {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        if (response.equals("Success")) {
-                            openMainActivity();
-                        }
+                        openMainActivity();
                     }
                 },
                 new Response.ErrorListener() {

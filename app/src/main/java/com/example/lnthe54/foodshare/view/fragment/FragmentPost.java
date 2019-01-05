@@ -250,10 +250,12 @@ public class FragmentPost extends Fragment implements AreaAdapter.CallBack {
                 Messages message = response.body();
                 if (message.getMessage().equals("Success")) {
                     uploadDialog.dismiss();
+                    initEditText();
                     getFragmentManager().beginTransaction()
                             .replace(R.id.frame_layout, FragmentHome.getInstance())
                             .commit();
                     MainActivity.tvTitle.setText(R.string.tv_home);
+                    MainActivity.bottomTB.setSelectedItemId(R.id.bottom_nav_home);
                 } else {
                     Toast.makeText(getContext(), "Upload Failed!", Toast.LENGTH_SHORT).show();
                 }
@@ -263,6 +265,13 @@ public class FragmentPost extends Fragment implements AreaAdapter.CallBack {
             public void onFailure(Call<Messages> call, Throwable t) {
             }
         });
+    }
+
+    private void initEditText() {
+        etName.setText("");
+        etPrice.setText("");
+        etAddress.setText("");
+        etDesc.setText("");
     }
 
     @Override

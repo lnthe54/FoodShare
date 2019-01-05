@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity
     public Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private NavigationView nav;
-    private BottomNavigationView bottomTB;
+    public static BottomNavigationView bottomTB;
     private ActionBarDrawerToggle drawerToggle;
     public static TextView tvTitle;
 

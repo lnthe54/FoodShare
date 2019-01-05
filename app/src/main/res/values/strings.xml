@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Ăn Vặt Hà Nội</string>
-    <string name="tv_home">Home</string>
+    <string name="tv_home">Trang chủ</string>
     <string name="tv_search">Tìm kiếm</string>
     <string name="tv_favorite">Yêu thích</string>
     <string name="tv_other">Khác</string>
