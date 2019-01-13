@@ -5,5 +5,5 @@ package com.example.lnthe54.foodshare.utils;
  * @project FoodShare
  */
 public interface ConfigIP {
-    String IP_ADDRESS = "192.168.1.153";
+    String IP_ADDRESS = "192.168.1.251";
 }

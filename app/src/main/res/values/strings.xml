@@ -84,4 +84,5 @@
     <string name="hint_time_start">0:00 AM</string>
     <string name="hint_et_name">Name</string>
     <string name="hint_password_cf">Confirm Password</string>
+    <string name="tv_post">Đăng</string>
 </resources>

@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="50dp"
+    android:layout_margin="5dp">
 
-    <TextView
-        android:id="@+id/tv_desc"
-        style="?android:textAppearanceSmall"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_avatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/avatar_demo" />
+
+    <EditText
+        android:id="@+id/input_comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorBlack" />
+        android:layout_centerVertical="true"
+        android:layout_margin="5dp"
+        android:layout_toLeftOf="@id/tv_post"
+        android:layout_toRightOf="@id/img_avatar" />
 
     <TextView
-        android:id="@+id/tv_comment"
+        android:id="@+id/tv_post"
         style="?android:textAppearanceMedium"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_desc"
-        android:layout_marginTop="10dp"
-        android:text="@string/tv_comment"
-        android:textColor="@color/colorOrange"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="5dp"
+        android:text="@string/tv_post"
+        android:textColor="@color/colorPrimary"
         android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/line"
-        android:layout_width="100dp"
-        android:layout_height="1dp"
-        android:layout_below="@id/tv_comment"
-        android:layout_alignLeft="@id/tv_comment"
-        android:layout_marginTop="5dp"
-        android:background="@color/colorOrange" />
-
 </RelativeLayout>

@@ -28,7 +28,7 @@
 
             <include
                 android:id="@+id/layout_comment"
-                layout="@layout/layout_comment"
+                layout="@layout/layout_list_comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/layout_infor"
